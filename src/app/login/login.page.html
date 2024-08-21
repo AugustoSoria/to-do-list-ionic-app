@@ -1,0 +1,18 @@
+<ion-content>
+  <div id="login-page" class="center">
+    <form (ngSubmit)="onLogin()">
+      <h4>Log in to see the tasks</h4>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="email" name="email" placeholder="admin" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password" placeholder="1234" name="password" required></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" type="submit">Login</ion-button>
+    </form>
+  </div>
+</ion-content>
