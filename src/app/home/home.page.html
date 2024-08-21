@@ -1,20 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Today's task
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ng-container *ngIf="!todoList.length">
+    <div class="no-task center">
+      <h4>Add some tasks 🚀</h4>
+    </div>
+  </ng-container>
+  <ion-list *ngIf="todoList.length">
+    <ion-item class="task-item" *ngFor="let todo of todoList">
+      <ion-label>
+        <h2>{{ todo.title }}</h2>
+        <p>{{ todo.description }}</p>
+        <p>{{ todo.date }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="goToAddTodo()">
+      <span class="fab-text">+</span>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
