@@ -13,5 +13,9 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () => import('./login/login.page').then((m) => m.LoginPage),
+  },  {
+    path: 'add-todo',
+    loadComponent: () => import('./add-todo/add-todo.page').then( m => m.AddTodoPage)
   },
+
 ];
