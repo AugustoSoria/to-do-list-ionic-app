@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { TodoService } from '../services/todo/todo.service';
 import { ITodo } from '../model/todo.model';
 import { ViewWillEnter } from '@ionic/angular';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,11 @@ import { ViewWillEnter } from '@ionic/angular';
 export class HomePage implements ViewWillEnter {
   todoList: ITodo[] = [];
 
-  constructor(private router: Router, private todoService: TodoService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private todoService: TodoService
+  ) {}
 
   ionViewWillEnter() {
     this.todoList = this.todoService.getTodos();
@@ -24,5 +29,9 @@ export class HomePage implements ViewWillEnter {
 
   goToAddTodo() {
     this.router.navigateByUrl('/add-todo');
+  }
+
+  logout() {
+    this.authService.clearCredentials();
   }
 }
