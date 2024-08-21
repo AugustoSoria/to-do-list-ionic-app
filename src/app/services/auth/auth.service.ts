@@ -35,4 +35,10 @@ export class AuthService {
       this.router.navigateByUrl('/home');
     }
   }
+
+  // Elimina las credenciales del localStorage y redireciona a login
+  clearCredentials() {
+    localStorage.removeItem(this.storageKey);
+    this.router.navigateByUrl('/login');
+  }
 }
